@@ -1,0 +1,100 @@
+<html>
+<head>
+    <title>Assignment 1: Teachable MAchine</title>
+</head>
+
+<body>
+    <div> 
+        <h1>Problem 4:</h1>
+        <div>
+            <img src = "code1.jpeg" style='height: 100%; width: 100%; object-fit: contain'/>
+        </div>
+        <div>
+            <img src="code12.jpeg" style='height: 100%; width: 100%; object-fit: contain'/>
+        </div>
+        <li>
+            <ol>
+                Training on inanimate objects: 
+                <ul>
+                    The system seemed to learn inanimate objects fairly well with only about 200 examples. I trained it on a facial cream container
+                    and tissue. Most of the time it hit 99%-100% accuracy. When adding some background noise such as my face we got results such as 
+                    the cream having 17 top K images with 85% accuracy, and the second class with 3 images for 15% accuracy. For the Tissue we had the
+                    14s image with 70% accuracy and the 3 images for the cream for 30% accuracy. 
+                </ul>
+            </ol>
+            <ol>
+                Training on differest expressions:
+                <ul>
+                    Here is saw more variation with around 300 examples for each case, the cases being me making no expression and me sticking my tounge out.
+                    For my stoic face I had 60% accuracy with 12 top K images and 40% accuracy with 8 top k images. While stick my tounge out I had 90% accuracy with i18 top K
+                    and 2 top k images.
+                </ul>
+                <ul>
+                    Edit: I realized after a little bit that the system actually learned to tell apart me tilting my head vs. not tilting my head, rather
+                    than when I was making each expression, haha. 
+                </ul>
+            </ol>
+        </li>
+    </div>
+    <div>
+        <h1>Problem 5:</h1>
+        <ol>
+            Modify the code in WebcamClassifier.js to experiment with different ways of computing confidences, such as weighted vs. not weighted.
+            <ul>
+                The change I made was a simple one, it simply divides all the classes by the number of examples evenly.
+            </ul>
+        </ol>
+        <ol>
+            Using your modified confidence calculations, try some of the example scenarios that confused the network, that you looked at in section 2 and section 4. Does one of your new methods  perform better? Why/why not do you think so?
+            <ul>
+                I once again tested with inanimate objects for reasons explained in question 3. I believe weighing probabilities evenly across classes
+                is useful in cases where you don't have too many examples to work off of for each class. 
+            </ul>
+            <ul>
+                In the example below I found that the system got learned the coloration of my phone more than the faces themselves. But making the change
+                above gave me a more even estimate when training both classes with not too many examples.  
+            </ul>
+            <img src="prob5.jpeg" style='height: 100%; width: 100%; object-fit: contain'/>
+        </ol>
+        <ol>
+            What are some image classification situations where your alternative ways of confidences might come in useful?
+            <ul>
+                I'd say this comes in most useful under situations when you have an uneven distribution of examples to work off of for each class. This way all classes are taken fairly evenly into account. 
+            </ul>
+        </ol>
+    </div>
+    <div>
+        <h1>Problem 6:</h1>
+        <img src="ass1p6.jpeg" style='height: 100%; width: 100%; object-fit: contain'/>
+        <p>I had some trouble getting javascript to release the button from being pressed when popping up the alert window. I was hoping to ask
+            today during class since it should be a simple fix.
+        </p>
+    </div>
+    <div>
+        <h1>Problem 7: Exploring Various K</h1>
+        <ul>
+            <li>
+                We began most of these examples with a default K = 20. I would guess that increasing the K would lead to more accuracy, since makes sure
+                to compare more data points, and thus is more accurate. A smaller K I would hypothesize does the opposite.
+            </li>
+            <li>
+                For K = 20. I trained on a birthday card and birthday envelope with about 50 examples each for an accuracy ranging from 50%-70%
+            </li>
+            <li>
+                For K = 10. I got to my surprise slightly higher accuracies on average with the same amount of training examples.
+            </li>
+            <li>
+                For K = 100. I actually got slightly less accurate on average data. with about 40%-60% accuracy. 
+            </li>
+        </ul>
+        <p>Although I need to replicate these results with other objects (although I will try facial expressions next), my initial guess as to why we see such
+            a pattern is that maybe with more topK images, there is more noise data  that the network can count as being "close" to the vector of the test image. So we
+            see a more even distribution of confidence. 
+        </p>    
+        <div>
+                <img src="ass1p7.jpeg" style='height: 100%; width: 100%; object-fit: contain'/>
+        </div>    
+    </div>
+    
+</body>
+</html>
