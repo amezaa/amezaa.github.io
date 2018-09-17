@@ -5,25 +5,29 @@
 
 <body>
     <div> 
-        <h1>Why is the model invalid?</h1>
+        <h1>Problem 1:</h1>
+        <h2>Why is the model invalid?</h2>
         <p> There is no transformation from the dimensions of the input image to something that can be processed by the cross entropy function, yielding an invalid model.</p>
 
         <h2>The classifications you are seeing are almost always wrong. Why is this? What performance should you expect from this particular network, i.e., how often should you expect it to be correct? Is this what you observe? </h2>
         <p> The weights were initialized randomly, and have not been adjusted or trained to classify this image in particular, so I you wouldn't expect great performance from this network in particular. until it's been trained. You'd expect it to be right maybe one in ten times, since there are ten classes.</p>
 
-        <h1>What accuracy do you observe in training MNIST? How many inferences per second does the demo perform? How many examples per second does it train? Then try the same thing with Fashion MNIST and document your findings.</h1>
+        <h1>Problem 2:</h1>
+        <h2>What accuracy do you observe in training MNIST? How many inferences per second does the demo perform? How many examples per second does it train? Then try the same thing with Fashion MNIST and document your findings.</h2>
         <p> I observe about 90% or higher accuracy with an outlier here or there. The system performs 1550 inferences per second, and trains 1080 examples per second. With Fashion MNI </p>
 
-        <h1> What accuracy do you observe in training CIFAR-10 after letting it train for a minute or two?</h1>
+        <h2> What accuracy do you observe in training CIFAR-10 after letting it train for a minute or two?</h2>
         <p> I see accuracies anywhere from 5%-90%, a very broad and often wrong range. </p>
 
-        <h1> Start training and you should see the accuracy plummet to zero, with terrible results. What’s going on?</h1>
+        <h2> Start training and you should see the accuracy plummet to zero, with terrible results. What’s going on?</h2>
         <p> The weights for the new layer are probably initialized randomly. Since the sequence of layers is linear, nothing new happens. It's as if we were just multiplying by another random matrix. Also presumably the weights during backpropagation become very small effectively making the points disappear, which is why we get Nan percentages. </p>
 
-        <h1> Train the new model. How well does it perform? Then make the first FC model wider by increasing the number of units to 100. Does this make a difference?</h1>
+        <h1>Problem 3:</h1>
+        <h2> Train the new model. How well does it perform? Then make the first FC model wider by increasing the number of units to 100. Does this make a difference?</h2>
         <p> The network performs okay at first with a wide range of accuracies from 27% - 80% ish. With 100 neurons I notice a much faster increase in training accuracy and much better performance with a smaller amount of training examples. </p>
 
-        <h1> Train your MNIST model with 1,2,3,4, and 5 FC layers, with ReLU between them. For each, use the same hyperparameters, and the same number of hidden units (except for the last layer). What were the training times and accuracy? Do you see any overfitting? What can you conclude about how many layers to use? Include screenshots of the Training Stats for each of your examples.</h1>
+        <h1>Problem 4:</h1>
+        <h2> Train your MNIST model with 1,2,3,4, and 5 FC layers, with ReLU between them. For each, use the same hyperparameters, and the same number of hidden units (except for the last layer). What were the training times and accuracy? Do you see any overfitting? What can you conclude about how many layers to use? Include screenshots of the Training Stats for each of your examples.</h2>
         <p> It seems that one layer did the trick, since this was a fairly simple dataset and the weights were able to be trained quickly and effectively. You can definitely see some overfitting in the larger layers, since their performance for the same amount of training wasn't so great on other examples.</p>
         <img src = "Layer1.jpeg" style='height: 100%; width: 100%; object-fit: contain'/>
         <img src = "Layer2.jpeg" style='height: 100%; width: 100%; object-fit: contain'/>
@@ -31,12 +35,48 @@
         <img src = "Layer4.jpeg" style='height: 100%; width: 100%; object-fit: contain'/>
         <img src = "Layer5.jpeg" style='height: 100%; width: 100%; object-fit: contain'/>
 
-        <h1> Build a model with 3 FC layers, with ReLU between them. Try making the first layer wide and the second narrow, and vice versa, using the same hyperparameters as before. Which performs better? Why do you think this is?</h1>
+        <h2> Build a model with 3 FC layers, with ReLU between them. Try making the first layer wide and the second narrow, and vice versa, using the same hyperparameters as before. Which performs better? Why do you think this is?</h2>
         <p>The first layer being wider seemed to be more effective on average. I'd assume this has something to do with the backpropagation process and a drawback of the nonlinear activation function we're using </p>
 
-        <h1> Try the same experiments with Fashion MNIST and CIFAR-10. Do you get similar results?</h1>
+        <h2> Try the same experiments with Fashion MNIST and CIFAR-10. Do you get similar results?</h2>
         <p> With both datasets I got much worse results across the board. These images are much more complex, and it seems that this network structure is definitely not enough for it.</p>
     <div>
-            
+    
+    <div>
+        <h1>Problem 5: </h1>
+        <h2>What can you say about the effect on the graph of cross entropies (the observed loss)? </h2>
+        <p> I tested out various batch sizes (20, 50, 100) on a certain number of batches (50), and then the same batch sizes on a larger number of batches (150).
+            Interestingly, I found that of course increasing the number of batches greatly reduced the loss (1.9ish -> 1.3ish), but I also got better results on average
+            with a smaller batch size (20); my initial suspicion is that it might be overfitting. 
+        </p>
+        <img src = "8_1.jpeg" style='height: 100%; width: 100%; object-fit: contain'/>
+        <img src = "8_2.jpeg" style='height: 100%; width: 100%; object-fit: contain'/>
+
+        <h1>Problem 6:</h1>
+        <h2>1. Look at some of the testing results and try to find examples of classifications where the system does poorly and is even wrong. When you see interesting results, document them on your webpage.
+        </h2>
+        <p> These results in particular were intersting to me because it seemed clear (relative of other data samples) 
+            what the numbers were but, for some reason it seemed that the model really struggled to identify 8.
+        </p>
+
+
+        <h2>2. Experiment with changing the batch size and the number of batches to try to improve the testing results. Give a brief description of what you tried, and the results.</h2>
+        <p>Ultimately, after playing around with both spectra of values, I found that what got me
+            the highest training accuracy was increasing the number of batches (1000) and keeping that batch
+            size smmall, around 20-40 images . 
+        </p>
+
+        <h2>3. Experiment to see how your new model does and briefly report on the results. </h2>
+        <p> I tested a model with a first layer of size 20, a leaky activation layer, and a second layer of size 10, with which I was just able to get about 90% accuracy.
+            That's still only 9/10 right, which isn't great. So I tried a three layer scheme of 20->15->10 for not much improvement, as it turns out. 
+        </p>
+
+        <h1>Problem 7:</h1>
+        <a href="assignment2code.js">index.js code</a>
+
+        <h1>Style Transfer:</h1>
+        <a href="https://www.instagram.com/p/BlHWwAtnnpf5JTp4FEIW4R7QvFxDP0b2Qk45j80/?taken-by=justabreadeater">Link to the style transfer i did using DeepArt.io</a>
+    </div>
+
 </body>
 </html>
