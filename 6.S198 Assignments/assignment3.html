@@ -24,7 +24,10 @@
 
         <h1> Problem 2: Style transfer examples </h1>
         <h2> I needed a new Instagram profile picture </h2>
-
+        <p> Here I take the style of Kanagawa's Wave off Mount Fuji</p>
+        <img src = "Images/kanagawa.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+        <p> Here I take Basquiat's Untitled, 1981 's style </p>
+        <img src = "Images/basquiat.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
 
         <h1> Problem 3: </h1>
         <h2> Fast style transfer </h2>
@@ -41,34 +44,97 @@
         </p>
         <img src = "Images/twofilters.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
 
-
         <h1> Problem 4: Building CNNs with code</h1>
-        <h2> Do you have a hypothesis for why CIFAR-10 is so much harder to train on than Fashion MNIST and MNIST 
+
+        <h2> Convolution-RELU-Pool Layers: 1 </h2>
+        <h3> Try changing the learning rate, batch size, and number of batches. 
+            Make sure that these numbers are reasonable to start (i.e. won't take too long to run on your computer).
+        </h3>
+        <p> 
+                <img src = "Images/manypass.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+                <img src = "Images/manypass.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+        </p>
+        <h3> 
+            Try changing some of the other parameters like field size, stride, output, …
+        </h3>
+        <p>
+                <img src = "Images/manypass.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+                <img src = "Images/manypass.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+        </p>
+
+        <h2> Convolution-RELU-Pool Layers: 2 </h2>
+        <h3> Try changing the learning rate, batch size, and number of batches. 
+            Make sure that these numbers are reasonable to start (i.e. won't take too long to run on your computer).
+        </h3>
+        <p> 
+            <img src = "Images/manypass.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+            <img src = "Images/manypass.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+        </p>
+        <h3> 
+            Try changing some of the other parameters like field size, stride, output, …
+        </h3>
+        <p>
+            <img src = "Images/manypass.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+            <img src = "Images/manypass.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+        </p>
+
+        <h2> Convolution-RELU-Pool Layers: 3 </h2>
+        <h3> Try changing the learning rate, batch size, and number of batches. 
+            Make sure that these numbers are reasonable to start (i.e. won't take too long to run on your computer).
+        </h3>
+        <p> 
+            I first started with a batch size of 50 and 500 batches:
+            <img src = "Images/3-50-500.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+            Overall a larger number of batches did better as expected (1000 = NUM_BATCHES):
+            <img src = "Images/3-50-1000.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+        </p>
+        <h3> 
+            Try changing some of the other parameters like field size, stride, output, …
+        </h3>
+        <p>
+            <img src = "Images/manypass.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+            <img src = "Images/manypass.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+        </p>
+
+        <h3> Do you have a hypothesis for why CIFAR-10 is so much harder to train on than Fashion MNIST and MNIST 
             (i.e. it’s more difficult to achieve a 90%+ accuracy) while Fashion MNIST has similar training times to 
             MNIST (even though Fashion MNIST is more complex than MNIST)? 
-        </h2>
+        </h3>
         <p> 
             My initial guess would be that the images in CIFAR-10 are far more complex feature-wise than the MNIST 
             datasets. There's also the addition of color that we have to account for.that adds another few layers of
             complexity where images might overlap.
         </p>
-        <h2> How does adding more convolutional layers relate to accuracy and training speed? Is there a point 
+        <h3> How does adding more convolutional layers relate to accuracy and training speed? Is there a point 
             at which adding more layers plateaus or even decreases the maximum accuracy you are able to achieve 
             with that model?
-        </h2>
+        </h3>
         <p>
             The training speed decreases due to the increased number of computations the computer has to make
             , but an increase of convolutional layers allows for more finely distinguishing of factors in the image
             and thus more accuracy (up to a certain point).
         </p>
 
+
+
+
+        <h1> Problem 6: </h1>
+        <h2> Add code that captures some performance statistic from a testing run.  For example, you might keep 
+            track of the fraction of examples where the prediction was correct , or perhaps do something more 
+            detailed that takes the predicted probabilities into account. 
+        </h2>
+
+
+        <h1> Problem 7: </h1>
         <h2> 
             Add links to your code files on your website (please make sure these are text files and
             not screenshots so that the graders can run your code if necessary).
         </h2>
         <p>
-            <a href="#"> Code</a>
+            <a href="index.js"> Code</a>
         </p>
+
+
     </div>
 
 </body>
