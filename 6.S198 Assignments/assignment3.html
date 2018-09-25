@@ -11,91 +11,101 @@
             I honestly didn't know what to expect. For Y I honestly can't say what similarities it shares with 8, except 
             maybe the "pinching" off into different strands at the center. For Z I expected 2. 
         </p>
-        <img src = "Images/xmnist.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
-        <img src = "Images/ymnist.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
-        <img src = "Images/zmnist.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+        <img src = "Images/xmnist.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
+        <img src = "Images/ymnist.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
+        <img src = "Images/zmnist.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
 
 
         <p> The system is surprisingly robust when it comes to random noise, likes these dots. It makes me wonder 
             if it was trained on such examples or it it's just that good at deducing features.
         </p>
-        <img src = "Images/dotmnist.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+        <img src = "Images/dotmnist.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
 
 
         <h1> Problem 2: Style transfer examples </h1>
         <h2> I needed a new Instagram profile picture </h2>
         <p> Here I take the style of Kanagawa's Wave off Mount Fuji</p>
-        <img src = "Images/kanagawa.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+        <img src = "Images/kanagawa.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
         <p> Here I take Basquiat's Untitled, 1981 's style </p>
-        <img src = "Images/basquiat.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+        <img src = "Images/basquiat.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
 
         <h1> Problem 3: </h1>
         <h2> Fast style transfer </h2>
         <p> Original image</p>
-        <img src = "Images/stata.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+        <img src = "Images/stata.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
         <p> Passing the image through the same filter multiple resulted in a notable loss of detail in the image, 
             as well as a notable increase in padding artifacts which took the form of a border (which I now realize
             I failed to capture in this screenshot). The image also seemed
             to become more pixelated every time.
         </p>
-        <img src = "Images/manypass.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+        <img src = "Images/manypass.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
         <p> Interestingly, the image becomes notably pixelated through the pass of two different filters, and 
             it seems that the styles don't mix very well either, as seen by the blurriness of the image.
         </p>
-        <img src = "Images/twofilters.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+        <img src = "Images/twofilters.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
 
         <h1> Problem 4: Building CNNs with code</h1>
 
-        <h2> Convolution-RELU-Pool Layers: 1 </h2>
+        <h2> Convolution-RELU-Pool CIFAR-10 Layers: 1 </h2>
         <h3> Try changing the learning rate, batch size, and number of batches. 
             Make sure that these numbers are reasonable to start (i.e. won't take too long to run on your computer).
         </h3>
         <p> 
-                <img src = "Images/manypass.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
-                <img src = "Images/manypass.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+            Here I test batch sizes of 50, with the number of batches being 500 and 1000, respectively, with 
+            the larger number of batches obvious yielding a better result due to more training. 
+        </p>
+        <img src = "Images/1-50-500.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
+        <img src = "Images/1-50-1000.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
+        <h3> 
+            Try changing some of the other parameters like field size, stride, output, …
+        </h3>
+        <p>
+            Initially I began by changing the stride size, which didn't seem to change much. 
+            Where I saw notable change, however, was in changing the optimizer. On average
+            it seemed to reach much higher accuries, for example this was done using adamax:    
+        </p>
+        <img src = "Images/1-adammax.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
+        <p>
+            Additionally, I excitingly managed to get the highest accuracy by far of the three examples
+            I use, by changing the number of filters to a higher number! In this case 6:
+        </p>
+        <img src = "Images/1-morefilter.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
+        <h2> Convolution-RELU-Pool CIFAR-10 Layers: 2 </h2>
+        <h3> Try changing the learning rate, batch size, and number of batches. 
+            Make sure that these numbers are reasonable to start (i.e. won't take too long to run on your computer).
+        </h3>
+        <p> 
+            <img src = "Images/2-50-500.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
+            <img src = "Images/2-50-1000.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
         </p>
         <h3> 
             Try changing some of the other parameters like field size, stride, output, …
         </h3>
         <p>
-                <img src = "Images/manypass.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
-                <img src = "Images/manypass.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+            I attempted that same changes I made with the 1 layer conv network above, and same
+            parameters, only to yield poorer results.
         </p>
-
-        <h2> Convolution-RELU-Pool Layers: 2 </h2>
-        <h3> Try changing the learning rate, batch size, and number of batches. 
-            Make sure that these numbers are reasonable to start (i.e. won't take too long to run on your computer).
-        </h3>
-        <p> 
-            <img src = "Images/manypass.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
-            <img src = "Images/manypass.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
-        </p>
-        <h3> 
-            Try changing some of the other parameters like field size, stride, output, …
-        </h3>
-        <p>
-            <img src = "Images/manypass.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
-            <img src = "Images/manypass.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
-        </p>
-
-        <h2> Convolution-RELU-Pool Layers: 3 </h2>
+        <img src = "Images/2-morefilters.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
+        <h2> Convolution-RELU-Pool CIFAR-10 Layers: 3 </h2>
         <h3> Try changing the learning rate, batch size, and number of batches. 
             Make sure that these numbers are reasonable to start (i.e. won't take too long to run on your computer).
         </h3>
         <p> 
             I first started with a batch size of 50 and 500 batches:
-            <img src = "Images/3-50-500.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
-            Overall a larger number of batches did better as expected (1000 = NUM_BATCHES):
-            <img src = "Images/3-50-1000.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
         </p>
+        <img src = "Images/3-50-500.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
+        <p>
+            Overall a larger number of batches did better as expected (1000 = NUM_BATCHES):
+        </p>
+        <img src = "Images/3-50-1000.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
         <h3> 
             Try changing some of the other parameters like field size, stride, output, …
         </h3>
         <p>
-            <img src = "Images/manypass.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
-            <img src = "Images/manypass.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+            Again, similar changes to the ones above yield even poorer results on the 
+            3 layer conv network.  
         </p>
-
+        <img src = "Images/3-morefilter.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
         <h3> Do you have a hypothesis for why CIFAR-10 is so much harder to train on than Fashion MNIST and MNIST 
             (i.e. it’s more difficult to achieve a 90%+ accuracy) while Fashion MNIST has similar training times to 
             MNIST (even though Fashion MNIST is more complex than MNIST)? 
@@ -110,28 +120,31 @@
             with that model?
         </h3>
         <p>
-            The training speed decreases due to the increased number of computations the computer has to make
-            , but an increase of convolutional layers allows for more finely distinguishing of factors in the image
-            and thus more accuracy (up to a certain point).
+            The training speed decreases due to the increased number of computations the computer has to make.
+            And one might think that an increase of convolutional layers allows for more finely distinguishing 
+            features in the image and thus more accuracy, but as we saw: that didn't really happen. I might attribute 
+            this to the fact that maybe those nets require much longer training because there are so many more parameters 
+            that they have to converge on.
         </p>
 
 
-
-
-        <h1> Problem 6: </h1>
+        <h1> Problem 5: </h1>
         <h2> Add code that captures some performance statistic from a testing run.  For example, you might keep 
             track of the fraction of examples where the prediction was correct , or perhaps do something more 
             detailed that takes the predicted probabilities into account. 
         </h2>
+        <p> I tried to add a new statistic that averaged the accuracies over the entire training set, but 
+            again I couldn't figure out how to make javascript display that alert
+        </p>
+        <img src = "Images/newstat.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
 
-
-        <h1> Problem 7: </h1>
+        <h1> Problem 6: </h1>
         <h2> 
             Add links to your code files on your website (please make sure these are text files and
             not screenshots so that the graders can run your code if necessary).
         </h2>
         <p>
-            <a href="index.js"> Code</a>
+            <a href="assignment3.js"> Code</a>
         </p>
 
 
