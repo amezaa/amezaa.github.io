@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title>Assignment 3: Convolutional Neural Networks</title>
+</head>
+
+<body>
+    <div> 
+        <h1> Problem 1.2: Changing the Model</h1>
+        <h2> 1.2.1: Why does the Generator need the second FC layer to transform the shape [256] output of the first FC layer?</h2>
+        <p> 
+            The second layer is needed because it's impossible to reshape a size 100 vector into the 28x28x1 shape
+            we'd need to create an mnist image. 28 times 28 is 784, and it's easy to see how to reshape between a 
+            vector of size 784 to a tensor of size 28x28x1. 
+        </p>
+        <h2> 1.2.2: Submit screenshots of some reults </h2>
+        <img src = "Images/ganmnist.png" style='height: 50%; width: 50%; object-fit: contain'/>
+
+        <h2> 1.2.3: Can you say anything about the performance of the system's default fully connected model versus the performance of the convolutional model?</h2>
+        <p>
+            After playing around with them for a bit, it's clear that the convolutional model produces much nicer
+            and faster results than simple fully connected layers.
+        </p>
+
+        <h1> Problem 1.3: Exploring with GAN Playground </h1>
+        <h2> 1.3.1: Were any of your models able to generate any rasonable MNIST digits? If so, were any of your models able to generate all of the MNIST digist (0-9)?</h2>
+        <p>
+            I'm not sure if it has anything to do with the computer I was using, but as much as I tried to change the
+            parameters, I couldn't seem to get away from all of the generated examples looking the same way and not 
+            coming close to forming a concrete image. They seemed to get stuck on examples such as the one below.
+        </p>
+        <h2> 1.3.2: What happened when the discriminator learning rate was greater than the generator learning rate? What about when the generator learning rate was greater than the discriminator learning rate?</h2>
+        <p>
+            Again, I'm not sure if it was a bug with my instance of using the website, but even when trying to follow the above question, I seemed to get stuck 
+            with the generator producing the same-looking images: 
+        </p>
+        <img src = "Images/changeparam.png" style='height: 50%; width: 50%; object-fit: contain'/>
+
+
+
+    </div>
+
+</body>
+</html>
