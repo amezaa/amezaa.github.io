@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>Assignment 3: Convolutional Neural Networks</title>
+</head>
+
+<body>
+    <div> 
+        <h1> Problem 1: What is the reward scheme for FrozenLake?</h1>
+        <h2> What is the reward scheme for FrozenLake? </h2>
+        
+        <p> It seems that the reward is 1 if the agent reaches the goal, and -1 or some other
+            penalizing values if it falls into a hole</p>
+        
+        <h1> Problem 2 </h1>
+        <h2> How big is the table used for Q-learning above? </h2>
+        
+        <p>
+            Assuming that from every square you can move in four directions. For 16 squares, the table would
+            be of size 16*4. 
+        </p>
+
+        <h1> Problem 3 </h1>
+        <h2> Did the rewards improve over time? Why or why not? </h2>
+        <p>
+            Steadily the table begins to get populated with more rewards than 0s; I would take this 
+            to be an improvement, or sign of it learning.
+        </p>
+
+        <h1> Problem 4 </h1>
+        <h2> In the above code segment, we provided some values for the learning rate and discount 
+            factor. Try different values for the learning rate. What do you observe?
+        </h2>
+        <p>
+            As expected, a lower learning rate yielded less rewards, and vice versa. Changing the discount
+            factor in a similar fashion resulted in the same behavior. I also tried increasing the episodes,
+            which naturally made the process take longer, but seemed to yield a more accurate/useful table. 
+        </p>
+
+    </div>
+
+</body>
+</html>
