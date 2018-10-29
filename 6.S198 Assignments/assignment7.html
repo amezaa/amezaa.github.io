@@ -1,0 +1,81 @@
+<html>
+<head>
+    <title>Assignment 3: Convolutional Neural Networks</title>
+</head>
+
+<body>
+    <div> 
+        <h1> Problem 1: Understanding LSTMs </h1>
+
+        <h2> 1. LSTMs consist of chained, repeating modules. At a high level, what are the two pieces of information that is passed between modules?</h2>
+        <p> The information passed on includes the new input, as well as the output of the previous module. </p>
+
+        <h2> 
+            2. "LSTM" stands for "Long Short Term Memory". The name is a reference to a problem with RNNs that 
+            LSTMs are designed to solve. What is this problem? At a high level, how do LSTMs attempt to address
+             this problem (what extra information do they add)?
+        </h2>
+        <p>
+            In short, RNNs cannot handle long term dependecies very well. LSTMs fix this by essentially transferring
+            an extra input, which doesn't go through any neural nets but instead carries through all the layers with
+            only minor changes being made by point-wise operations. 
+        </p>
+
+        <h2> 
+            3. The blog post describes two views of RNN/LSTM architectures. In one of these views, we think of 
+            the RNN as being "unrolled" into a chain of repeating modules. What values (represented with tensors) 
+            are shared between these modules, and what values are different? (The answer is slightly confusing 
+            when thinking about training, so just think about using the model for prediction.)
+        </h2>
+        <p>
+            In the RNN, part of the output of the network is shared with the next layer, while the inputs to each layer
+            are different, along with another part of the network output.
+        </p>
+
+        <h2>
+            Remember that the purpose of the "forget gate layer" is to allow the network to "forget" some of 
+            the current state. Why do you think a sigmoid non-linearity is used here instead of a ReLU 
+            nonlinearity (as we were using in most of our previous models)?
+        </h2>
+        <p>
+            The sigmoid allows for a better spectrum of output value , for us to gauge how willing we are to forget 
+            certain words. For example, we might be sure we want to forget some value but theres still a nonzero chance
+            that it's a value we want, so we might assign it a value like 0.1 to represent our uncertainty. With ReLU 
+            these values for automatically be 0 for a half of our input range.
+        </p>
+
+
+        <h1> 2: Text Generation (Monday homework due in-class Wednesday) </h1>
+        <h2> 2.2 Run the model</h2>
+        <h3>1. Run the model for 10 to 15 epochs, or until you see interesting results. Pause the model and 
+            record the perplexity. Perplexity is a measurement of how well the model predicts a sample.
+             A low perplexity indicates that the model is good at making predictions. </h3>
+        <p> The perplexity is 4.54</p>
+
+        <h3>2. Adjust the softmax sample temperature, and continue training for a few samples.   Softmax sample temperature is a hyperparameter that determines how softmax computes the log probabilities of the prediction outputs. If the temperature is high, the probabilities will go toward zero and you will see less frequent words. If the temperature is low, then you will see more common words, but there may be more repetition.  Try to find a temperature that produces the most natural seeming text, and give some examples of your generated sentence results. </h3>
+        <p> "I want the stand it boy in the down the stand the like you that I can't and the me and the ass" </p>
+        <p> "Your that it all and it all the stand the that the say the ball the start as the could with the down"</p>
+        
+        <h3>
+                3. Write down any observations about your generated sentence results. Does your text reflect properties of the input sources you used (i.e. vocabulary, sentence length)?
+        </h3>
+        <p> It seems that a lower softmax temperature yielded the best (and funniest) results, and despite 
+            the input sources, the output was reasonably different in length
+        </p>
+        
+        <h3> 4. Try changing the model parameters and initialization. Record your observations from at least one of these experiments. </h3>
+        <p> After many epochs, the RNN did not manage to learn as nice of a sentence structure as the LSTMs. Even
+            with a lower temperature there were still too many repeated words. 
+        </p>
+
+        <h1> 3: Music generation with Tensorflow </h1>
+        <h2> 1. Follow the steps outlined in the notebook. You need to fill out the lines marked #TODO with the appropriate code. Once you are finished, upload your solution code file to your website in a way that would allow us to download and run it.</h2>
+        <a href="Music Generation with RNNs.ipynb">CODE</a>
+        <h2> 2. Upload the midi file for your generated music clip to your website!</h2>
+        
+    
+    
+    </div>
+
+</body>
+</html>
