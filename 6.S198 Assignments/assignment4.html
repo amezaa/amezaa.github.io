@@ -84,6 +84,8 @@
 
         <p>
             6052: 6051, 2864, 453, 5523, 5038, 202, 2689, 6226, 6042, 5485
+            3659: 7440, 2154, 7134, 96, 7439, 72, 4065, 2609, 6058, 7243
+            6835: 4720, 4749, 3438, 65, 2477, 5309, 6223, 3441, 2871, 4919
         </p>
 
         <h1> 2.3: Creating new fonts </h1>
@@ -94,7 +96,11 @@
             sample font characters are displayed in the right side of the screen instead of just the lowercase 
             characters. Take a screenshot for your writeup.
         </h2>
-            
+        
+        <p> 
+            The character I chose to represent is "Z", below is the screenshot:
+        </p>
+        <img src = "images/sidebar.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
 
         <h2>
             1.  Edit VectorChooser.vue to add a new button under the "Apply vector math" button. 
@@ -102,12 +108,30 @@
             the current font, out of all the fonts in the 50K training set. Can you find examples of nearest neighbor fonts  that don't make sense?
         </h2>
 
+        <p>
+            The button can be seen on the website, and I was able to stumble into some neighbors that aren't quite convincing, at least to me.
+
+            The similarity in action can be seen here: 
+        </p>
+        <img src = "images/similarity.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
+        <p>
+            Meanwhile the odd case occured with one of the sample fonts:
+        </p>
+        <img src = "images/sample.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
+        <p>
+            Which was most "similar" to this font:
+        </p>
+        <img src = "images/similar.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
 
         <h2>
             2. What is the “average” of a set of fonts? (Hint: What does that mean in terms of the 
             40 dimensions)? Write some code to Find the nearest font neighbor to the average font. 
         </h2>
 
+        <p>
+            The average of a set of fonts would be the vector sum of their 40-D vectors, divided by the total number of vectors, to yield a new 40-D vector. I wrote the code and did this for the given fonts, found the nearest neighbor of that array, and then plugged it into fontfinder to find that the average font of all the vectors looks like this:
+        </p>
+        <img src = "images/average.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
 
         <h2> 
             3. Similar to Monday's word analogy exercise, we will now be working with font analogies. 
@@ -120,6 +144,12 @@
             What does adding this vector to a font do? Does it perform bolding well at thickening the original font? Are there other characteristics that seem to also carry over? Try this with another characteristic. It may be helpful to use the characteristics you gathered previously.
         </h3>
 
+        <p>
+            I took one of the standard sample fonts, added the bolding vector, and the result was a more bold version of that vector:
+        </p>
+        <img src = "images/normal.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
+        <img src = "images/bolded.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
+
         <h3>
             b. Find 10 fonts for a specific quality (i.e. bolding, dotting, fancy, serif...etc) and average 
             them out to find a characteristic vector (for example, “bolding vector”). Try applying that vector to 
@@ -127,6 +157,10 @@
             "Apply Vector Math" button, or you can make new buttons. Does it work better or worse than the previous
              one-sample method? Try this with at least 2 characteristics.
         </h3>
+        <p>
+            I chose to implement a thicc (I literally wrote it this way unintentionally, wow, how far I've fallen) characteristic for this first case. I applied it to thin vectors and this was the result (it wasn't great):
+        </p>
+        <img src = "images/thicc.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
 
         <h3>
             c. Find 10 fonts the exhibit for a specific characteristic and 10 fonts for the opposite of that 
@@ -135,6 +169,11 @@
              vector")?   Does this work better or worse than the method above to obtain your desired 
              characteristic? Try this with at least 2 characteristics.
         </h3>
+        <p>
+            Using the average difference between the 10 thick fonts from above, and 10 thin fonts. Again, using one of the standard fonts, it seemed to yield a thicker version of that. I'm not quite sure what the result was supposed to be
+        </p>
+        <img src = "images/sample1.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
+        <img src = "images/sampleavg.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
 
         <h2>
             4. Can you figure out how to create a vector that makes uppercase fonts lowercase? 
@@ -142,14 +181,29 @@
              analogous vectors, or you can try playing with the 40 attribute sliders directly.)
         </h2>
 
+        <p>
+            I tried applying a simple lowercase font to an uppercase font to see the immediate results, which were not so good. 
+        </p>
+        <img src = "images/lowercase.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
+
         <h2>
             5. Can you create a vector based on your personal font tastes (i.e. a personal-likeable vector)? 
             Please also make note of any interesting vector directions you find.
         </h2>
+        <p>
+            I call this one: Brash & Bold
+        </p>
+        <img src = "images/rename.jpg" style='height: 50%; width: 50%; object-fit: contain'/>
 
         <h2>
             6. Link your code in a text-readable format with your submission.
         </h2>
+
+        <a href="/Users/bowenite/Desktop/font-explorer/demos/latent-space-explorer/utils/FontModel.js">FontModel.js</a>
+        <a href="/Users/bowenite/Desktop/font-explorer/demos/latent-space-explorer/components/VectorChooser.vue">VectorChooser.vue</a>
+        <a href="/Users/bowenite/Desktop/font-explorer/demos/latent-space-explorer/components/Alphabet.vue">Alphabet.vue</a>
+
+
     </div>
 
 </body>
